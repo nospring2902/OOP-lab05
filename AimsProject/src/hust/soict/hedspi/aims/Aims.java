@@ -19,7 +19,7 @@ public class Aims {
  // init store setup 
     public static void initSetup() {
 
-        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);     
+        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", -87, 19.95f);     
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star War", "Science Fiction", "George Lucas", 87, 24.95f); 
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
         store.addMedia(dvd1);
@@ -37,7 +37,7 @@ public class Aims {
 
         CompactDisc cd1 = new CompactDisc("Adele - 30", "Music","Adele", 1500.98f);
         Track track1CD1 = new Track("All Night Parking (interlude)", 161);
-        Track track2CD1 = new Track("To Be Loved", 403);
+        Track track2CD1 = new Track("To Be Loved", -403);
         Track track3CD1 = new Track("Woman Like Me", 300);
         cd1.addTrack(track1CD1);
         cd1.addTrack(track2CD1);
