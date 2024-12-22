@@ -2,6 +2,8 @@ package hust.soict.hedspi.aims.media;
 
 import java.util.Comparator;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
 public abstract class Media implements Comparable<Media>{
 	
 	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
@@ -72,15 +74,31 @@ public abstract class Media implements Comparable<Media>{
         return this.getTitle().toLowerCase().contains(title.toLowerCase());
     }
 	
+	@Override
 	public boolean equals(Object obj) {
-    	if (obj == this) {
-    		return true;
-    	}
-    	if (!(obj instanceof Media)) {
-    		return false;
-    	}
-    	return ((Media)obj).getTitle() == this.getTitle();
-    }
+	    // Kiểm tra nếu obj là null
+	    if (obj == null) {
+	        return false;
+	    }
+	    // Kiểm tra nếu obj là cùng đối tượng
+	    if (obj == this) {
+	        return true;
+	    }
+	    // Kiểm tra kiểu của obj
+	    if (!(obj instanceof Media)) {
+	        return false;
+	    }
+	    // Ép kiểu obj về Media
+	    Media otherMedia = (Media) obj;
+
+	    // So sánh title, cần xử lý null-safe
+	    if (this.title == null || otherMedia.getTitle() == null) {
+	        return false;
+	    }
+
+	    return this.title.equalsIgnoreCase(otherMedia.getTitle());
+	}
+
 	
 	public String toString() {
     	return "Media: " + this.getTitle() + 
@@ -96,10 +114,6 @@ public abstract class Media implements Comparable<Media>{
             return Double.compare(this.getCost(), other.getCost());
         }
     }
-	
-	public String play() {
-        return "Playing media";
-    }
+
 
 }
-
